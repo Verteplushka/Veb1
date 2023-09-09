@@ -1,3 +1,6 @@
+<?php
+        session_start();
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,6 +19,7 @@
 </head>
 
 <body>
+
     <header>
         Колбасин Владислав Ильич, P3216, Вариант 2613
     </header>
@@ -53,7 +57,10 @@
     </form>
 
     <?php
-    $m = [];
+    
+    if (!isset($_SESSION['m'])) {
+        $_SESSION['m'] = [];
+    }
     if(!isset($_POST['r'])){
         echo "R is not set";
         exit();
@@ -72,11 +79,11 @@
 
 
     if((($x>=0 && $x<=$r) && (($y<=$r/2 && $y>=0) || ($y>=$x-$r && $y<=0)))  ||  (($x<=-$r/2 && $x<=0) && ($y<=0 && $x*$x+$y*$y<=$r*$r))){
-        array_push($m, array($x, $y, $r, date('Y-m-d H:i:s')));
+        array_push($_SESSION['m'], array($x, $y, $r, date('Y-m-d H:i:s'), "yes"));
         echo "yes";
     }
     else{
-        array_push($m, array($x, $y, $r, date('Y-m-d H:i:s')));
+        array_push($_SESSION['m'], array($x, $y, $r, date('Y-m-d H:i:s'), "no"));
         echo "no";
     }
         ?>
@@ -87,10 +94,11 @@
             <th>Y</th>
             <th>R</th>
             <th>time</th>
+            <th>result</th>
         </tr>
         
         <?php
-        foreach ($m as $row) {
+        foreach ($_SESSION['m'] as $row) {
             echo '<tr>';
             foreach ($row as $cell) {
                 echo '<td>' . $cell . '</td>';
@@ -101,7 +109,7 @@
     </table>
 
 
-    
+    <img src="areas.png" width="500" height="400">
         
 </body>
 

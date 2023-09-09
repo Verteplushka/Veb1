@@ -1,6 +1,6 @@
 <?php
-        session_start();
-    ?>
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,6 +15,18 @@
             font-size: 30px;
             text-align: center;
         }
+
+        .block-container {
+            display: flex;
+        }
+
+        .block {
+            width: 30%;
+            margin: 20px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+        }
     </style>
 </head>
 
@@ -23,8 +35,9 @@
     <header>
         Колбасин Владислав Ильич, P3216, Вариант 2613
     </header>
-
-    <form action="" method="POST">
+<div class="block-container">
+    <div class="block">
+        <form method="POST" onsubmit="return validateForm();">
             Изменение X (от -3 до 3):
             <input type="text" name="x">
             <br>
@@ -53,42 +66,59 @@
             <label for="1">5</label>
             <input type="radio" name="r" id="5" value="5">
             <br>
-        <input type="submit" name="button">
-    </form>
+            <input type="submit" name="button">
+            <input type="button" id="resetM">
 
+        </form>
+    </div>
+
+    <script>
+        function validateNotEmpty(inputField) {
+            const value = inputField.value.trim();
+            if (value === '') {
+                alert('Поле "Имя" не может быть пустым');
+                return false;
+            }
+            return true;
+        }
+    </script>
+
+    <div class="block">
+        <img src="areas.png" width="400" height="300">
+    </div>
+
+
+    <div class="block">
     <?php
-    
     if (!isset($_SESSION['m'])) {
         $_SESSION['m'] = [];
     }
-    if(!isset($_POST['r'])){
+    if (!isset($_POST['r'])) {
         echo "R is not set";
         exit();
     }
     $x = $_POST['x'];
     $y = $_POST['y'];
     $r = $_POST['r'];
-    if(!is_numeric($x)){
+    if (!is_numeric($x)) {
         echo "X must content only numbers";
         exit();
     }
-    if(!($x<3 && $x>-3)){
+    if (!($x <= 3 && $x >= -3)) {
         echo "X is not in (-3, 3)";
         exit();
     }
 
 
-    if((($x>=0 && $x<=$r) && (($y<=$r/2 && $y>=0) || ($y>=$x-$r && $y<=0)))  ||  (($x<=-$r/2 && $x<=0) && ($y<=0 && $x*$x+$y*$y<=$r*$r))){
+    if ((($x >= 0 && $x <= $r) && (($y <= $r / 2 && $y >= 0) || ($y >= $x - $r && $y <= 0))) || (($x <= -$r / 2 && $x <= 0) && ($y <= 0 && $x * $x + $y * $y <= $r * $r))) {
         array_push($_SESSION['m'], array($x, $y, $r, date('Y-m-d H:i:s'), "yes"));
         echo "yes";
-    }
-    else{
+    } else {
         array_push($_SESSION['m'], array($x, $y, $r, date('Y-m-d H:i:s'), "no"));
         echo "no";
     }
-        ?>
-
-<table border="1">
+    ?>
+    <table border="1">
         <tr>
             <th>X</th>
             <th>Y</th>
@@ -96,7 +126,7 @@
             <th>time</th>
             <th>result</th>
         </tr>
-        
+
         <?php
         foreach ($_SESSION['m'] as $row) {
             echo '<tr>';
@@ -107,10 +137,8 @@
         }
         ?>
     </table>
+    </div>
 
-
-    <img src="areas.png" width="500" height="400">
-        
 </body>
 
 </html>

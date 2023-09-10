@@ -41,13 +41,13 @@ session_start();
     </header>
     <div class="block-container">
         <div class="block">
-            <form method="POST" onsubmit="return validate();">
-                Изменение X (от -3 до 3):
-                <input type="text" name="x" id="x">
+            <form action="" method="POST" onsubmit="return validate();">
+                <label for="x">X:</label>
+                <input type="text" name="x" id="x" placeholder="от -3 до 3">
                 <span id="error" class="error-message"></span>
                 <br>
-                Изменение Y:
-                <select name=" y">
+                <label for="y">Y:</label>
+                <select name="y" id="y">
                     <option value="-4">-4</option>
                     <option value="-3">-3</option>
                     <option value="-2">-2</option>
@@ -59,16 +59,16 @@ session_start();
                     <option value="4">4</option>
                 </select>
                 <br>
-                Изменение R:
+                R:
                 <label for="1">1</label>
                 <input type="radio" name="r" id="1" value="1" required>
-                <label for="1">2</label>
+                <label for="2">2</label>
                 <input type="radio" name="r" id="2" value="2">
-                <label for="1">3</label>
+                <label for="3">3</label>
                 <input type="radio" name="r" id="3" value="3">
-                <label for="1">4</label>
+                <label for="4">4</label>
                 <input type="radio" name="r" id="4" value="4">
-                <label for="1">5</label>
+                <label for="5">5</label>
                 <input type="radio" name="r" id="5" value="5">
                 <br>
                 <input type="submit" name="button">

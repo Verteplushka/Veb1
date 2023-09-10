@@ -71,7 +71,7 @@ session_start();
                 <label for="5">5</label>
                 <input type="radio" name="r" id="5" value="5">
                 <br>
-                <input type="submit" name="button">
+                <input type="submit" value="Check">
                 <!-- <input type="button" id="resetM"> -->
 
             </form>

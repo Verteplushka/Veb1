@@ -1,4 +1,6 @@
 <?php
+date_default_timezone_set('Europe/Moscow');
+$startTime = microtime(true);
 
 if (!isset($_SESSION['m'])) {
     $_SESSION['m'] = [];
@@ -21,10 +23,10 @@ if (!($x <= 3 && $x >= -3)) {
 
 
 if ((($x >= 0 && $x <= $r) && (($y <= $r / 2 && $y >= 0) || ($y >= $x - $r && $y <= 0))) || (($x <= -$r / 2 && $x <= 0) && ($y <= 0 && $x * $x + $y * $y <= $r * $r))) {
-    array_push($_SESSION['m'], array($x, $y, $r, date('Y-m-d H:i:s'), "yes"));
+    array_push($_SESSION['m'], array($x, $y, $r, date('Y-m-d H:i:s'), (microtime(true) - $startTime)*1000, "yes"));
     echo "yes";
 } else {
-    array_push($_SESSION['m'], array($x, $y, $r, date('Y-m-d H:i:s'), "no"));
+    array_push($_SESSION['m'], array($x, $y, $r, date('Y-m-d H:i:s'), (microtime(true) - $startTime)*1000, "no"));
     echo "no";
 }
 ?>

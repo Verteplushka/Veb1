@@ -92,7 +92,8 @@ session_start();
                     <th>X</th>
                     <th>Y</th>
                     <th>R</th>
-                    <th>time</th>
+                    <th>current time</th>
+                    <th>script time</th>
                     <th>result</th>
                 </tr>
 

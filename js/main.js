@@ -1,48 +1,34 @@
+// document.getElementById("x").addEventListener("input", validateX);
 
-            // const x = doucment.getElementById('x');
-            // const error = document.getElementById('error');
-            // x.addEventListener('input', function () {
-            //     const value = x.value;
-            //     // Здесь проводите проверку данных и обновляйте сообщение об ошибке, если необходимо
-            //     if (!isNaN(value)) {
-            //         error.textContent = 'X не удовлетворяет условию "от -3 до 3"';
-            //     } else {
-            //         error.textContent = ''; // Очистить сообщение об ошибке
-            //     }
-            // });
+// // document.getElementById('x').style.color = "red";
 
+// function validateX() {
+//   var x = document.getElementById("x").value;
+//   console.log("validateX");
+//   if (!isNaN(x) && x <= 3 && x >= -3) {
+//     document.getElementById("x").style.color = "black";
+//   }
+//   document.getElementById("x").style.color = "red";
+// }
 
+function checkAllFields(element) {
+  var x = element.x.value;
+  var y = element.y.value;
+  var r = element.r.value;
+  var response = "";
+  if (isNaN(x)) {
+    response = "X must be a number";
+  } else if (!(x <= 3 && x >= -3)) {
+    response = "X must be in [-3; 3]";
+  } else if (y == "") {
+    response = "Y must be chosen";
+  } else if (r == "") {
+    response = "R must be chosen";
+  }
 
-            function validate() {
-                const x = document.getElementById('x');
-                const y = document.getElementById('y');
-                const r = document.getElementById('r');
-                return validateNotEmpty(x, 'X') & validateNotEmpty(r, 'R') & validateIsNumber(x, 'X');
-
-            }
-
-            function validateXRange(value){
-                if (value >= -3 && value <= 3) {
-                    return true;
-                }
-                alert('X не удовлетворяет условию "от -3 до 3"');
-                return false;
-            }
-
-            function validateNotEmpty(value, name) {
-                //const value = inputField.value.trim();
-                if (value === '') {
-                    alert(name + ' не может быть пустым');
-                    return false;
-                }
-                return true;
-            }
-
-            function validateIsNumber(value, name) {
-                //const value = inputField.value.trim();
-                if (isNaN(value)) {
-                    return true;
-                }
-                alert(name + ' должно быть числом');
-                return false;
-            }
+  if (response != "") {
+    document.getElementById("error").innerHTML = response;
+    return false;
+  }
+  return true;
+}

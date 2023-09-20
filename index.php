@@ -35,16 +35,16 @@ session_start();
 </head>
 
 <body>
+    <script src="js/main.js"></script>
 
     <header>
         Колбасин Владислав Ильич, P3216, Вариант 2613
     </header>
     <div class="block-container">
         <div class="block">
-            <form action="" method="POST" onsubmit="return validate();">
+            <form action="" method="POST" onsubmit="return checkAllFields(this);">
                 <label for="x">X:</label>
-                <input type="text" name="x" id="x" placeholder="от -3 до 3">
-                <span id="error" class="error-message"></span>
+                <input type="text" name="x" id="x" placeholder="от -3 до 3" required>
                 <br>
                 <label for="y">Y:</label>
                 <select name="y" id="y">
@@ -52,7 +52,7 @@ session_start();
                     <option value="-3">-3</option>
                     <option value="-2">-2</option>
                     <option value="-1">-1</option>
-                    <option value="0">0</option>
+                    <option value="0" selected>0</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -71,13 +71,13 @@ session_start();
                 <label for="5">5</label>
                 <input type="radio" name="r" id="5" value="5">
                 <br>
-                <input type="submit" value="Check">
-                <!-- <input type="button" id="resetM"> -->
+                <span id="error" class="error-message"></span>
+                <br>
+                <input type="submit">
+
 
             </form>
         </div>
-
-        <script src="js/main.js"></script>
 
         <div class="block">
             <img src="areas.png" width="100%" alt="визуализация задания">
@@ -99,6 +99,7 @@ session_start();
                 <?php include 'php/table.php' ?>
             </table>
         </div>
+
 
 </body>
 

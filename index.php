@@ -7,7 +7,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>lab1</title>
     <style>
         header {
             color: blue;
@@ -18,6 +18,8 @@ session_start();
 
         .block-container {
             display: flex;
+            font-size: 15px;
+            
         }
 
         .block {
@@ -28,14 +30,23 @@ session_start();
             border: 1px solid #ccc;
         }
 
-        .error-message {
+        #error {
             color: red;
+        }
+
+        input[type="submit"]{
+            background-color: #3399ff;
+        }
+
+        input[type="submit"]:hover{
+            cursor: pointer;
         }
     </style>
 </head>
 
 <body>
     <script src="js/main.js"></script>
+    
 
     <header>
         Колбасин Владислав Ильич, P3216, Вариант 2613
@@ -71,7 +82,7 @@ session_start();
                 <label for="5">5</label>
                 <input type="radio" name="r" id="5" value="5">
                 <br>
-                <span id="error" class="error-message"></span>
+                <span id="error"></span>
                 <br>
                 <input type="submit">
 
@@ -100,7 +111,7 @@ session_start();
                 <?php include 'php/table.php' ?>
             </table>
         </div>
-
+    </div>
 
 </body>
 

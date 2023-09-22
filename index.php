@@ -45,8 +45,6 @@ session_start();
 </head>
 
 <body>
-    <script src="js/main.js"></script>
-    
 
     <header>
         Колбасин Владислав Ильич, P3216, Вариант 2613
@@ -84,8 +82,8 @@ session_start();
                 <br>
                 <span id="error"></span>
                 <br>
-                <input type="submit">
-
+                <input type="submit" id="submit">
+                <input type="button" id="clearM" value="очистить таблицу">
 
             </form>
         </div>
@@ -112,7 +110,8 @@ session_start();
             </table>
         </div>
     </div>
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>

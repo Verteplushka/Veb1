@@ -1,15 +1,22 @@
-// document.getElementById("x").addEventListener("input", validateX);
+$("#clearM").on("click", clearM);
 
-// // document.getElementById('x').style.color = "red";
 
-// function validateX() {
-//   var x = document.getElementById("x").value;
-//   console.log("validateX");
-//   if (!isNaN(x) && x <= 3 && x >= -3) {
-//     document.getElementById("x").style.color = "black";
-//   }
-//   document.getElementById("x").style.color = "red";
-// }
+function clearM(){
+  $.ajax({
+    url: 'php/clearM.php',
+    type: 'GET',
+    cache: false,
+    data: {},
+    dataType: 'html',
+    beforeSend: function(){
+      $("#clearM").prop("disabled", true);
+    },
+    success: function(data){
+        alert(data);
+        $("#clearM").prop("disabled", false);
+    }
+  })
+} 
 
 function checkAllFields(element) {
   var x = element.x.value;

@@ -92,10 +92,8 @@
 
 
         <div class="block">
-            <?php include 'php/main.php' ?>
-            <table border="1">
+            <table border="1" id="table">
                 <tr>
-                    <th>№</th>
                     <th>X</th>
                     <th>Y</th>
                     <th>R</th>
@@ -104,7 +102,6 @@
                     <th>result</th>
                 </tr>
 
-                <?php include 'php/table.php' ?>
             </table>
         </div>
     </div>

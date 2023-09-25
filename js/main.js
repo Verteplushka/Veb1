@@ -20,8 +20,10 @@ function clearM() {
 function checkAllFields() {
   var x = $("#x").val();
   var y = $("#y").val();
-  var r = $("#r").val();
+  var r = $("input[name='r']:checked").val();
   var response = "";
+  console.log(r);
+
   if (isNaN(x)) {
     response = "X must be a number";
   } else if (!(x <= 3 && x >= -3)) {
@@ -30,7 +32,7 @@ function checkAllFields() {
     response = "X must be chosen";
   } else if (y == "") {
     response = "Y must be chosen";
-  } else if (r == "") {
+  } else if (r == 'undefined') {
     response = "R must be chosen";
   }
 
@@ -43,12 +45,14 @@ function checkAllFields() {
     url: "php/main.php",
     type: "POST",
     cache: false,
-    data: { x: x, y: y, r: r },
+    data: { 'x': x, 'y': y, 'r': r },
     dataType: "html",
     beforeSend: function () {
       $("#submit").prop("disabled", true);
     },
     success: function (data) {
+console.log(data);
+        $('#table tbody').append(data);
       $("#submit").prop("disabled", false);
     },
   });

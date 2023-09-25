@@ -6,8 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>lab1</title>
     <style>
+        body{
+            background-image: url('background6.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+        }
         header {
-            color: blue;
+            color: white;
             font-family: sans-serif;
             font-size: 30px;
             text-align: center;
@@ -15,6 +21,7 @@
 
         .block-container {
             display: flex;
+            justify-content: space-between;
             font-size: 15px;
 
         }
@@ -24,7 +31,6 @@
             margin: 20px;
             padding: 10px;
             background-color: #f0f0f0;
-            border: 1px solid #ccc;
         }
 
         #error {
@@ -35,8 +41,13 @@
             background-color: #3399ff;
         }
 
-        input[type="submit"]:hover {
+        input[id="submit"]:hover {
             cursor: pointer;
+        }
+
+        .block img {
+            display: block;
+            margin: 0 auto;
         }
     </style>
 </head>
@@ -89,7 +100,7 @@
         </div>
 
         <div class="block">
-            <img src="areas.png" width="100%" alt="визуализация задания">
+            <img src="areas.png" width="80%" alt="визуализация задания">
         </div>
 
 

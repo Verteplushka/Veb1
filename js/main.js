@@ -2,19 +2,7 @@ $("#clearM").on("click", clearM);
 $("#submit").on("click", checkAllFields);
 
 function clearM() {
-  $.ajax({
-    url: "php/clearM.php",
-    type: "POST",
-    cache: false,
-    data: {},
-    dataType: "html",
-    beforeSend: function () {
-      $("#clearM").prop("disabled", true);
-    },
-    success: function (data) {
-      $("#clearM").prop("disabled", false);
-    },
-  });
+  document.getElementById("tbody").innerHTML = "";
 }
 
 function checkAllFields() {
@@ -32,7 +20,7 @@ function checkAllFields() {
     response = "X must be chosen";
   } else if (y == "") {
     response = "Y must be chosen";
-  } else if (r == 'undefined') {
+  } else if (r == "undefined") {
     response = "R must be chosen";
   }
 
@@ -51,8 +39,7 @@ function checkAllFields() {
       $("#submit").prop("disabled", true);
     },
     success: function (data) {
-console.log(data);
-        $('#table tbody').append(data);
+      $("#tbody").append(data);
       $("#submit").prop("disabled", false);
     },
   });

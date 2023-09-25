@@ -1,4 +1,3 @@
-<?php include 'php/start.php'?>
 <!DOCTYPE html>
 <html>
 
@@ -17,7 +16,7 @@
         .block-container {
             display: flex;
             font-size: 15px;
-            
+
         }
 
         .block {
@@ -32,11 +31,11 @@
             color: red;
         }
 
-        input[type="button"]{
+        input[type="button"] {
             background-color: #3399ff;
         }
 
-        input[type="submit"]:hover{
+        input[type="submit"]:hover {
             cursor: pointer;
         }
     </style>
@@ -83,7 +82,7 @@
                 <input type="button" id="submit" value="отправить">
                 <input type="button" id="clearM" value="очистить таблицу">
 
-            </form>
+                </form>
         </div>
 
         <div class="block">
@@ -92,16 +91,18 @@
 
 
         <div class="block">
-            <table border="1" id="table">
-                <tr>
-                    <th>X</th>
-                    <th>Y</th>
-                    <th>R</th>
-                    <th>current time</th>
-                    <th>script time</th>
-                    <th>result</th>
-                </tr>
-
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>X</th>
+                        <th>Y</th>
+                        <th>R</th>
+                        <th>current time</th>
+                        <th>script time</th>
+                        <th>result</th>
+                    </tr>
+                </thead>
+                <tbody  id="tbody"></tbody>
             </table>
         </div>
     </div>

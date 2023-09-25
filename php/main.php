@@ -2,6 +2,14 @@
 date_default_timezone_set('Europe/Moscow');
 $startTime = microtime(true);
 
+if (!isset($_POST['x'])) {
+    echo "X is not set";
+    exit();
+}
+if (!isset($_POST['y'])) {
+    echo "Y is not set";
+    exit();
+}
 if (!isset($_POST['r'])) {
     echo "R is not set";
     exit();
@@ -20,8 +28,6 @@ if (!($x <= 3 && $x >= -3)) {
 
 
 if ((($x >= 0 && $x <= $r) && (($y <= $r / 2 && $y >= 0) || ($y >= $x - $r && $y <= 0))) || (($x <= -$r / 2 && $x <= 0) && ($y <= 0 && $x * $x + $y * $y <= $r * $r))) {
-    echo "yes";
-
     echo '<tr>';
     foreach (array($x, $y, $r, date('Y-m-d H:i:s'), (microtime(true) - $startTime)*1000, "yes") as $cell) {
         echo '<td>';
@@ -30,8 +36,6 @@ if ((($x >= 0 && $x <= $r) && (($y <= $r / 2 && $y >= 0) || ($y >= $x - $r && $y
     }
     echo '</tr>';
 } else {
-    echo "no";
-
     echo '<tr>';
     foreach (array($x, $y, $r, date('Y-m-d H:i:s'), (microtime(true) - $startTime)*1000, "no") as $cell) {
         echo '<td>';

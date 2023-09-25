@@ -33,7 +33,7 @@ function checkAllFields() {
     url: "php/main.php",
     type: "POST",
     cache: false,
-    data: { 'x': x, 'y': y, 'r': r },
+    data: { x: x, y: y, r: r },
     dataType: "html",
     beforeSend: function () {
       $("#submit").prop("disabled", true);

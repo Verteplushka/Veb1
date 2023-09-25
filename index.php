@@ -1,6 +1,4 @@
-<?php
-session_start();
-?>
+<?php include 'php/start.php'?>
 <!DOCTYPE html>
 <html>
 
@@ -34,7 +32,7 @@ session_start();
             color: red;
         }
 
-        input[type="submit"]{
+        input[type="button"]{
             background-color: #3399ff;
         }
 
@@ -51,9 +49,9 @@ session_start();
     </header>
     <div class="block-container">
         <div class="block">
-            <form action="" method="POST" onsubmit="return checkAllFields(this);">
+            <form">
                 <label for="x">X:</label>
-                <input type="text" name="x" id="x" placeholder="от -3 до 3" required>
+                <input type="text" name="x" id="x" placeholder="от -3 до 3">
                 <br>
                 <label for="y">Y:</label>
                 <select name="y" id="y">
@@ -70,7 +68,7 @@ session_start();
                 <br>
                 R:
                 <label for="1">1</label>
-                <input type="radio" name="r" id="1" value="1" required>
+                <input type="radio" name="r" id="1" value="1">
                 <label for="2">2</label>
                 <input type="radio" name="r" id="2" value="2">
                 <label for="3">3</label>
@@ -82,7 +80,7 @@ session_start();
                 <br>
                 <span id="error"></span>
                 <br>
-                <input type="submit" id="submit">
+                <input type="button" id="submit" value="отправить">
                 <input type="button" id="clearM" value="очистить таблицу">
 
             </form>

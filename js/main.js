@@ -1,32 +1,33 @@
 $("#clearM").on("click", clearM);
+$("#submit").on("click", checkAllFields);
 
-
-function clearM(){
+function clearM() {
   $.ajax({
-    url: 'php/clearM.php',
-    type: 'GET',
+    url: "php/clearM.php",
+    type: "POST",
     cache: false,
     data: {},
-    dataType: 'html',
-    beforeSend: function(){
+    dataType: "html",
+    beforeSend: function () {
       $("#clearM").prop("disabled", true);
     },
-    success: function(data){
-        alert(data);
-        $("#clearM").prop("disabled", false);
-    }
-  })
-} 
+    success: function (data) {
+      $("#clearM").prop("disabled", false);
+    },
+  });
+}
 
-function checkAllFields(element) {
-  var x = element.x.value;
-  var y = element.y.value;
-  var r = element.r.value;
+function checkAllFields() {
+  var x = $("#x").val();
+  var y = $("#y").val();
+  var r = $("#r").val();
   var response = "";
   if (isNaN(x)) {
     response = "X must be a number";
   } else if (!(x <= 3 && x >= -3)) {
     response = "X must be in [-3; 3]";
+  } else if (x == "") {
+    response = "X must be chosen";
   } else if (y == "") {
     response = "Y must be chosen";
   } else if (r == "") {
@@ -35,7 +36,20 @@ function checkAllFields(element) {
 
   if (response != "") {
     document.getElementById("error").innerHTML = response;
-    return false;
+    return;
   }
-  return true;
+  document.getElementById("error").innerHTML = "";
+  $.ajax({
+    url: "php/main.php",
+    type: "POST",
+    cache: false,
+    data: { x: x, y: y, r: r },
+    dataType: "html",
+    beforeSend: function () {
+      $("#submit").prop("disabled", true);
+    },
+    success: function (data) {
+      $("#submit").prop("disabled", false);
+    },
+  });
 }

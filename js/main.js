@@ -20,7 +20,7 @@ function checkAllFields() {
     response = "X must be chosen";
   } else if (y == "") {
     response = "Y must be chosen";
-  } else if (r == "undefined") {
+  } else if (r == undefined) {
     response = "R must be chosen";
   }
 

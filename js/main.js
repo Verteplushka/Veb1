@@ -1,6 +1,30 @@
 $("#clearM").on("click", clearM);
 $("#submit").on("click", checkAllFields);
 
+document.getElementById("x").addEventListener("input", function (){
+  response = "";
+  var x = $("#x").val();
+
+  if (isNaN(x)) {
+    response = "X must be a number";
+  } else{
+    var bigX = new Big(x);
+    console.log(bigX.plus(new Big(-3)).toString());
+    if (!(bigX.plus(new Big(-3)) < 0 && bigX.plus(new Big(3)) > 0)) {
+      response = "X must be in (-3; 3)";
+    }
+  }
+
+  if (response != "") {
+    document.getElementById("error").innerHTML = response;
+    $("#submit").prop("disabled", true);
+  }
+  else{
+    $("#submit").prop("disabled", false);
+    document.getElementById("error").innerHTML = "";
+  }
+});
+
 document.getElementById("x").addEventListener("input", function () {
   localStorage.setItem("x", this.value);
 });
@@ -59,14 +83,18 @@ function checkAllFields() {
 
   if (isNaN(x)) {
     response = "X must be a number";
-  } else if (!(x <= 3 && x >= -3)) {
-    response = "X must be in [-3; 3]";
   } else if (x == "") {
     response = "X must be chosen";
   } else if (y == "") {
     response = "Y must be chosen";
   } else if (r == undefined) {
     response = "R must be chosen";
+  } else{
+    var bigX = new Big(x);
+    console.log(bigX.plus(new Big(-3)).toString());
+    if (!(bigX.plus(new Big(-3)) < 0 && bigX.plus(new Big(3)) > 0)) {
+      response = "X must be in (-3; 3)";
+    }
   }
 
   if (response != "") {
@@ -82,6 +110,7 @@ function checkAllFields() {
     data: { x: x, y: y, r: r },
     dataType: "html",
     beforeSend: function () {
+      event.preventDefault();
       $("#submit").prop("disabled", true);
     },
     success: function (data) {
@@ -89,4 +118,5 @@ function checkAllFields() {
       $("#submit").prop("disabled", false);
     },
   });
+
 }

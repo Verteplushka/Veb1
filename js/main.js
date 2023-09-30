@@ -1,16 +1,61 @@
 $("#clearM").on("click", clearM);
 $("#submit").on("click", checkAllFields);
 
+document.getElementById("x").addEventListener("input", function () {
+  localStorage.setItem("x", this.value);
+});
+document.getElementById("y").addEventListener("input", function () {
+  localStorage.setItem("y", this.value);
+});
+
+document.getElementById("1").addEventListener("input", function () {
+  localStorage.setItem("r", this.value);
+});
+document.getElementById("2").addEventListener("input", function () {
+  localStorage.setItem("r", this.value);
+});
+document.getElementById("3").addEventListener("input", function () {
+  localStorage.setItem("r", this.value);
+});
+document.getElementById("4").addEventListener("input", function () {
+  localStorage.setItem("r", this.value);
+});
+document.getElementById("5").addEventListener("input", function () {
+  localStorage.setItem("r", this.value);
+});
+
+window.addEventListener("load", function () {
+  var savedInputValue = localStorage.getItem("x");
+  if (savedInputValue !== null) {
+    this.document.getElementById("x").value = savedInputValue;
+  }
+});
+window.addEventListener("load", function () {
+  var savedInputValue = localStorage.getItem("y");
+  if (savedInputValue !== null) {
+    this.document.getElementById("y").value = savedInputValue;
+  }
+});
+window.addEventListener("load", function () {
+  var savedInputValue = localStorage.getItem("r");
+  if (savedInputValue !== null) {
+    this.document.getElementById(savedInputValue).checked = true;
+  }
+});
+
 function clearM() {
   document.getElementById("tbody").innerHTML = "";
+  localStorage.setItem("tbody", "");
 }
+
+document.getElementById("tbody").innerHTML = localStorage.getItem("tbody");
 
 function checkAllFields() {
   var x = $("#x").val();
   var y = $("#y").val();
   var r = $("input[name='r']:checked").val();
   var response = "";
-  localStorage.setItem("tbody", document.document.getElementById("tbody").innerHTML);
+  localStorage.setItem("tbody", document.getElementById("tbody").innerHTML);
 
   if (isNaN(x)) {
     response = "X must be a number";
@@ -44,9 +89,4 @@ function checkAllFields() {
       $("#submit").prop("disabled", false);
     },
   });
-
-  function showTable(){
-    document.getElementById("tbody").innerHTML = localStorage.getItem("tbody");
-  }
-
 }

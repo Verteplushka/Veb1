@@ -10,7 +10,7 @@ function checkAllFields() {
   var y = $("#y").val();
   var r = $("input[name='r']:checked").val();
   var response = "";
-  console.log(r);
+  localStorage.setItem("tbody", document.document.getElementById("tbody").innerHTML);
 
   if (isNaN(x)) {
     response = "X must be a number";
@@ -26,6 +26,7 @@ function checkAllFields() {
 
   if (response != "") {
     document.getElementById("error").innerHTML = response;
+    event.preventDefault();
     return;
   }
   document.getElementById("error").innerHTML = "";
@@ -43,4 +44,9 @@ function checkAllFields() {
       $("#submit").prop("disabled", false);
     },
   });
+
+  function showTable(){
+    document.getElementById("tbody").innerHTML = localStorage.getItem("tbody");
+  }
+
 }

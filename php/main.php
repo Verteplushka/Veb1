@@ -1,5 +1,4 @@
 <?php
-date_default_timezone_set('Europe/Moscow');
 $startTime = microtime(true);
 
 if (!isset($_POST['x'])) {
@@ -27,7 +26,7 @@ if (!($x <= 3 && $x >= -3)) {
 }
 
 
-if ((($x >= 0 && $x <= $r) && (($y <= $r / 2 && $y >= 0) || ($y >= $x - $r && $y <= 0))) || (($x <= -$r / 2 && $x <= 0) && ($y <= 0 && $x * $x + $y * $y <= $r * $r))) {
+if ((($x >= 0 && bccomp($x, $r, 20) <= 0) && ((bccomp($y, $r, 20) <= 0 / 2 && $y >= 0) || ($y >= bccomp($x, $r, 20) && $y <= 0))) || ((bcadd($x, $r, 20) <= 0 / 2 && $x <= 0) && ($y <= 0 && bcmul($x, $x, 20) + bcmul($y, $y, 20) <= bcmul($r, $r, 20)))) {
     echo '<tr>';
     foreach (array($x, $y, $r, date('Y-m-d H:i:s'), (microtime(true) - $startTime)*1000, "yes") as $cell) {
         echo '<td>';
@@ -44,4 +43,6 @@ if ((($x >= 0 && $x <= $r) && (($y <= $r / 2 && $y >= 0) || ($y >= $x - $r && $y
     }
     echo '</tr>';
 }
+
+
 ?>

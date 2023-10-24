@@ -9,10 +9,9 @@ document.getElementById("x").addEventListener("input", function (){
     response = "X must be a number";
   } else{
     var bigX = new Big(x);
-    console.log(bigX.plus(new Big(-3)).toString());
     if (!(bigX.plus(new Big(-3)) < 0 && bigX.plus(new Big(3)) > 0)) {
       response = "X must be in (-3; 3)";
-    }
+    } 
   }
 
   if (response != "") {
@@ -79,7 +78,6 @@ function checkAllFields() {
   var y = $("#y").val();
   var r = $("input[name='r']:checked").val();
   var response = "";
-  localStorage.setItem("tbody", document.getElementById("tbody").innerHTML);
 
   if (isNaN(x)) {
     response = "X must be a number";
@@ -91,7 +89,6 @@ function checkAllFields() {
     response = "R must be chosen";
   } else{
     var bigX = new Big(x);
-    console.log(bigX.plus(new Big(-3)).toString());
     if (!(bigX.plus(new Big(-3)) < 0 && bigX.plus(new Big(3)) > 0)) {
       response = "X must be in (-3; 3)";
     }
@@ -107,7 +104,7 @@ function checkAllFields() {
     url: "php/main.php",
     type: "POST",
     cache: false,
-    data: { x: x, y: y, r: r },
+    data: { 'x': x, 'y': y, 'r': r },
     dataType: "html",
     beforeSend: function () {
       event.preventDefault();
@@ -115,8 +112,8 @@ function checkAllFields() {
     },
     success: function (data) {
       $("#tbody").append(data);
+      localStorage.setItem("tbody", document.getElementById("tbody").innerHTML);
       $("#submit").prop("disabled", false);
     },
   });
-
 }

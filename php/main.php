@@ -1,6 +1,6 @@
 <?php
-$accuracy = 20;
 $startTime = microtime(true);
+
 
 if (!isset($_POST['x'])) {
     echo "X is not set";
@@ -14,6 +14,8 @@ if (!isset($_POST['r'])) {
     echo "R is not set";
     exit();
 }
+
+
 $x = $_POST['x'];
 $y = $_POST['y'];
 $r = $_POST['r'];
@@ -21,13 +23,13 @@ if (!is_numeric($x)) {
     echo "X must content only numbers";
     exit();
 }
-if (!(bccomp($x, 3, $accuracy) && bccomp($x, -3, $accuracy))) {
+if (!($x <= 3 && $x >= -3)) {
     echo "X is not in (-3, 3)";
     exit();
 }
 
 
-if ((($x >= 0 && bccomp($x, $r, $accuracy) <= 0) && ((bccomp($y, $r, $accuracy) <= 0 / 2 && $y >= 0) || ($y >= bccomp($x, $r, $accuracy) && $y <= 0))) || ((bcadd($x, $r, $accuracy) <= 0 / 2 && $x <= 0) && ($y <= 0 && bcmul($x, $x, $accuracy) + bcmul($y, $y, $accuracy) <= bcmul($r, $r, $accuracy)))) {
+if ((($x >= 0 && $x <= $r) && (($y <= $r / 2 && $y >= 0) || ($y >= $x - $r && $y <= 0))) || (($x <= -$r / 2 && $x <= 0) && ($y <= 0 && $x * $x + $y * $y <= $r * $r))) {
     echo '<tr>';
     foreach (array($x, $y, $r, date('Y-m-d H:i:s'), (microtime(true) - $startTime)*1000, "yes") as $cell) {
         echo '<td>';
@@ -35,6 +37,7 @@ if ((($x >= 0 && bccomp($x, $r, $accuracy) <= 0) && ((bccomp($y, $r, $accuracy) 
         echo '</td>';
     }
     echo '</tr>';
+
 } else {
     echo '<tr>';
     foreach (array($x, $y, $r, date('Y-m-d H:i:s'), (microtime(true) - $startTime)*1000, "no") as $cell) {
@@ -44,6 +47,4 @@ if ((($x >= 0 && bccomp($x, $r, $accuracy) <= 0) && ((bccomp($y, $r, $accuracy) 
     }
     echo '</tr>';
 }
-
-
 ?>

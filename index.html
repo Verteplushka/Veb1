@@ -27,9 +27,12 @@
         }
 
         .block {
+            border-radius: 10px;
             width: 45%;
             margin: 20px;
             padding: 10px;
+            /* border: 20px;
+            border-color: #3399ff; */
             background-color: #f0f0f0;
         }
 
@@ -73,7 +76,7 @@
         <div class="block">
             <form onsubmit="checkAllFields()">
                 <label for="x">X:</label>
-                <input type="text" name="x" id="x" placeholder="от -3 до 3">
+                <input type="text" name="x" id="x" placeholder="от -3 до 3" maxlength="17">
                 <br>
 
                 <label for="y">Y:</label>
